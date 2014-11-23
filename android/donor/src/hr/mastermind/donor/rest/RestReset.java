@@ -22,12 +22,6 @@ import android.os.AsyncTask;
 
 public class RestReset extends AsyncTask<String, String, String>{
 
-	/**
-	 * Metoda koja izvršava provjeru korisnika uz pomoæ servisa
-	 * @param korisnicko ime i odgovarajuæa lozinka
-	 * @return popunjeni objekt tipa Korisnik(korisnickoIme, "", ime, prezime, email, telefon) 
-	 * ukoliko je prijava uspjesna  ili null ukoliko prijava nije uspješna
-	 */
 	public int reset(String email)
 	{			
 		this.execute(email);
@@ -45,12 +39,6 @@ public class RestReset extends AsyncTask<String, String, String>{
 		return  parsirajJson(jsonRezultat);			
 	}
 
-	/**
-	 * Parsira json string dohvaæen s web servisa
-	 * @param jsonRezultat
-	 * @return popunjeni objekt tipa Korisnik(korisnickoIme, "", ime, prezime, email, telefon) 
-	 * ukoliko je prijava uspjesna ili null ukoliko prijava nije uspjesna
-	 */
 	private int parsirajJson(String jsonRezultat) {		
 	
 		//
@@ -78,15 +66,10 @@ public class RestReset extends AsyncTask<String, String, String>{
 		return 0;
 	}
 
-	/**
-	 * Metoda za asinkronu komunikaciju izmeðu aplikacije i servisa.
-	 * @param email i lozinka u obliku ArrayList
-	 * @return odgovor servisa u json obliku
-	 * */
 	protected String doInBackground(String... podaciPrijava) {
 		HttpClient httpKlijent = new DefaultHttpClient();
 	 
-		HttpPost httpPostZahtjev = new HttpPost("http://www.mstrmnd.tk/rest/v1/reset");
+		HttpPost httpPostZahtjev = new HttpPost("http://www.mstrmnd.tk/rest/v1/passmailnew");
 		String jsonResult = "";
 		ResponseHandler<String> handler = new BasicResponseHandler();
 		

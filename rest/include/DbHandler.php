@@ -113,7 +113,10 @@ public function generateApiKey() {
                   //createUser($email, $password, $firstname, $lastname, $role, $phone, $blood_type, $piercing, $tattoo, $sickness, $birthyear, $gender, $weight);
     public function createAdmin($username, $password, $firstname, $lastname, $phone, $station) {
         require_once 'PassHash.php';
-        $response = array();
+       
+       include_once 'Logs.php';
+       $log=new Logs();
+       $log->writeLogToFile("aaa");
 
         // First check if user already existed in db
         if ($this->isAdminExists($username)==0) {
@@ -122,31 +125,28 @@ public function generateApiKey() {
 			$pass=new PassHash();
 			
             $password_hash = $pass->hash($password);        
-
-            // Generating API key
-            $api_key = $this->generateApiKey();
-            
+ 
             $role=ADMIN_ROLE;
             // insert query
             //insert admin table
-            $result_admin = $this->con->query("INSERT INTO admin(username, pass, firstname, lastname, phone, station_idstation, admin_role_idadmin_role, locked, lock_count,api_key) 
-                                                     values('".$username."','".$password_hash."','".$firstname."','".$lastname."','".$phone."','".$station."','".$role."',0,0,'".$api_key."');");
+            $result_admin = $this->con->query("INSERT INTO admin(username, pass, firstname, lastname, phone, station_idstation, admin_role_idadmin_role, locked, lock_count) 
+                                                     values('".$username."','".$password_hash."','".$firstname."','".$lastname."','".$phone."','".$station."','".$role."',0,0);");
             
             
             // Check for successful insertion
             if ($result_admin) {
                 // User successfully inserted
-                return USER_CREATED;
+                return 1;
             } else {
                 // Failed to create user
-                return USER_CREATE_FAILED;
+                return 0;
             }
         } else {
             // User with same email already existed in the db
-            return USER_EXISTS;
+            return -1;
         }
 
-        return $response;
+       
     }
     
     
@@ -448,6 +448,14 @@ public function getAllDonationsByUser($iduser){
 
             return $result;
     }
+    
+public function getAllDonations(){
+    
+    //get donations time, station
+    $result=$this->con->query("SELECT user.firstname AS firstname, user.lastname AS lastname, station.name AS name, donation.time AS time FROM donation JOIN station ON donation.station_idstation=station.idstation JOIN user ON donation.user_iduser=user.iduser;");
+
+            return $result;
+    }    
     
 
 

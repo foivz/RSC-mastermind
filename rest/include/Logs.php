@@ -4,9 +4,9 @@
 Class Logs{
     
     
-    function writeLogToFile($message){
+    public function writeLogToFile($message){
         
-        $file = 'logging.log';
+        $file = '../../logging.log';
         $log=$message."\n";
         
         file_put_contents($file, $log, FILE_APPEND | LOCK_EX);

@@ -26,12 +26,7 @@ import android.os.AsyncTask;
 
 public class RestDonations  extends AsyncTask<String, Donation, String>{
 
-	/**
-	 * Metoda koja izvršava provjeru korisnika uz pomoæ servisa
-	 * @param korisnicko ime i odgovarajuæa lozinka
-	 * @return popunjeni objekt tipa Korisnik(korisnickoIme, "", ime, prezime, email, telefon) 
-	 * ukoliko je prijava uspjesna  ili null ukoliko prijava nije uspješna
-	 */
+	
 	public Donation getDonations(String apiKey)
 	{			
 		this.execute(apiKey);
@@ -49,12 +44,7 @@ public class RestDonations  extends AsyncTask<String, Donation, String>{
 		return  parsirajJson(jsonRezultat);			
 	}
 
-	/**
-	 * Parsira json string dohvaæen s web servisa
-	 * @param jsonRezultat
-	 * @return popunjeni objekt tipa Korisnik(korisnickoIme, "", ime, prezime, email, telefon) 
-	 * ukoliko je prijava uspjesna ili null ukoliko prijava nije uspjesna
-	 */
+	
 	private Donation parsirajJson(String jsonRezultat) {		
 		Donation donacija = null;
 		//{"error":false,"active":"1","email":"test3@gmail.com","firstname":"testime","lastname":"testprezime",
@@ -85,11 +75,7 @@ public class RestDonations  extends AsyncTask<String, Donation, String>{
 		return donacija;
 	}
 
-	/**
-	 * Metoda za asinkronu komunikaciju izmeðu aplikacije i servisa.
-	 * @param email i lozinka u obliku ArrayList
-	 * @return odgovor servisa u json obliku
-	 * */
+	
 	protected String doInBackground(String... podaciPrijava) {
 		HttpClient httpKlijent = new DefaultHttpClient();
 	 

@@ -86,12 +86,17 @@ public class LoginActivity extends Activity {
 			{
 				
 				//spremi u shared preferences key
-				SharedPreferences.Editor editor = getSharedPreferences(MainActivity.PREFS_NAME, MODE_PRIVATE).edit();
+				 SharedPreferences.Editor editor = getSharedPreferences(MainActivity.PREFS_NAME, MODE_PRIVATE).edit();
 				 editor.putString("apiKey", prijava.getApiKey());
 				 editor.putString("email", prijava.getEmail());
 				 editor.putString("firstName", prijava.getFirstName());
 				 editor.putString("lastName", prijava.getLastName());
 				 editor.putInt("role", prijava.getRole());
+				 editor.putString("phone", prijava.getPhone());
+				 editor.putString("gender", prijava.getSex());
+				 editor.putString("year", prijava.getYear());
+				 editor.putString("weight", prijava.getWeight());
+				 editor.putString("city", prijava.getCity());
 			
 				 editor.commit();
 				
@@ -135,7 +140,7 @@ public class LoginActivity extends Activity {
 			}
 			else
 			{			
-				Toast.makeText(context, "Neuspješno resetiranje lozinke! Molimo Vas unesite ispravnu email adresu!", Toast.LENGTH_SHORT).show();
+				Toast.makeText(context, "Uspješno ste resetirali lozinku! Molimo Vas pogledajte email!", Toast.LENGTH_SHORT).show();
 			}
 		}	
 	}

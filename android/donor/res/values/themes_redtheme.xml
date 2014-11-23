@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- Generated with http://android-holo-colors.com -->
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+  <style name="RedTheme" parent="@style/_RedTheme"/>
+
+  <style name="_RedTheme" parent="android:Theme.Holo.Light">
+
+    <item name="android:editTextBackground">@drawable/redtheme_edit_text_holo_light</item>
+
+    <item name="android:autoCompleteTextViewStyle">@style/AutoCompleteTextViewRedTheme</item>
+
+    <item name="android:listChoiceIndicatorMultiple">@drawable/redtheme_btn_check_holo_light</item>
+
+    <item name="android:listChoiceIndicatorSingle">@drawable/redtheme_btn_radio_holo_light</item>
+
+    <item name="android:buttonStyle">@style/ButtonRedTheme</item>
+
+    <item name="android:imageButtonStyle">@style/ImageButtonRedTheme</item>
+
+    <item name="android:dropDownSpinnerStyle">@style/SpinnerRedTheme</item>
+
+    <item name="android:buttonStyleToggle">@style/ToggleRedTheme</item>
+
+  </style>
+
+</resources>

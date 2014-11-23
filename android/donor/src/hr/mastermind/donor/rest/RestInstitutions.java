@@ -22,12 +22,7 @@ import android.os.AsyncTask;
 
 public class RestInstitutions extends AsyncTask<String, List<Institution>, String>{
 
-	/**
-	 * Metoda koja izvršava provjeru korisnika uz pomoæ servisa
-	 * @param korisnicko ime i odgovarajuæa lozinka
-	 * @return popunjeni objekt tipa Korisnik(korisnickoIme, "", ime, prezime, email, telefon) 
-	 * ukoliko je prijava uspjesna  ili null ukoliko prijava nije uspješna
-	 */
+	
 	public List<Institution> getUser()
 	{			
 		this.execute();
@@ -45,12 +40,7 @@ public class RestInstitutions extends AsyncTask<String, List<Institution>, Strin
 		return  parsirajJson(jsonRezultat);			
 	}
 
-	/**
-	 * Parsira json string dohvaæen s web servisa
-	 * @param jsonRezultat
-	 * @return popunjeni objekt tipa Korisnik(korisnickoIme, "", ime, prezime, email, telefon) 
-	 * ukoliko je prijava uspjesna ili null ukoliko prijava nije uspjesna
-	 */
+	
 	private List<Institution> parsirajJson(String jsonRezultat) {		
 		List<Institution> institucije = new ArrayList<Institution>();
 		Institution institucija;
@@ -82,11 +72,7 @@ public class RestInstitutions extends AsyncTask<String, List<Institution>, Strin
 		return institucije;
 	}
 
-	/**
-	 * Metoda za asinkronu komunikaciju izmeðu aplikacije i servisa.
-	 * @param email i lozinka u obliku ArrayList
-	 * @return odgovor servisa u json obliku
-	 * */
+
 	protected String doInBackground(String... podaciPrijava) {
 		HttpClient httpKlijent = new DefaultHttpClient();
 	 

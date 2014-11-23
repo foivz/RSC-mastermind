@@ -15,6 +15,7 @@
         android:layout_alignBaseline="@+id/settings_lblNotifications"
         android:layout_alignBottom="@+id/settings_lblNotifications"
         android:layout_toRightOf="@+id/settings_lblNotifications"
+        android:minWidth="80dp"
         android:text="ToggleButton" />
 
     <TextView
@@ -29,7 +30,7 @@
 
     <Button
         android:id="@+id/settings_btnLogoff"
-        style="?android:attr/buttonStyleSmall"
+        style="?android:attr/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/toggleButton1"

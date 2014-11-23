@@ -27,12 +27,6 @@ import android.os.AsyncTask;
 
 public class RestTopTen  extends AsyncTask<String, List<User>, String>{
 
-	/**
-	 * Metoda koja izvršava provjeru korisnika uz pomoæ servisa
-	 * @param korisnicko ime i odgovarajuæa lozinka
-	 * @return popunjeni objekt tipa Korisnik(korisnickoIme, "", ime, prezime, email, telefon) 
-	 * ukoliko je prijava uspjesna  ili null ukoliko prijava nije uspješna
-	 */
 	public List<User> getUser()
 	{			
 		this.execute();
@@ -50,12 +44,7 @@ public class RestTopTen  extends AsyncTask<String, List<User>, String>{
 		return  parsirajJson(jsonRezultat);			
 	}
 
-	/**
-	 * Parsira json string dohvaæen s web servisa
-	 * @param jsonRezultat
-	 * @return popunjeni objekt tipa Korisnik(korisnickoIme, "", ime, prezime, email, telefon) 
-	 * ukoliko je prijava uspjesna ili null ukoliko prijava nije uspjesna
-	 */
+
 	private List<User> parsirajJson(String jsonRezultat) {		
 		List<User> korisnici = new ArrayList<User>();
 		User korisnik;
@@ -87,11 +76,6 @@ public class RestTopTen  extends AsyncTask<String, List<User>, String>{
 		return korisnici;
 	}
 
-	/**
-	 * Metoda za asinkronu komunikaciju izmeðu aplikacije i servisa.
-	 * @param email i lozinka u obliku ArrayList
-	 * @return odgovor servisa u json obliku
-	 * */
 	protected String doInBackground(String... podaciPrijava) {
 		HttpClient httpKlijent = new DefaultHttpClient();
 	 

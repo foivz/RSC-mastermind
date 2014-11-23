@@ -26,10 +26,9 @@ public class RegisterActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_register);
 		
-		/**
-		 * Spinner za spol
-		 */
-		Spinner spinnerSex = (Spinner) findViewById(R.id.profile_spnSex);
+		
+		//spinner za spol
+		Spinner spinnerSex = (Spinner) findViewById(R.id.register_spnSex);
 		// Create an ArrayAdapter using the string array and a default spinner layout
 		ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
 		        R.array.sex_array, android.R.layout.simple_spinner_item);
@@ -39,10 +38,8 @@ public class RegisterActivity extends Activity {
 		spinnerSex.setAdapter(adapter);
 		
 		
-		/**
-		 * spinner za krvnu grupu
-		 */
-		Spinner spinnerBloodType = (Spinner) findViewById(R.id.profile_spnBloodType);
+		//spinner za krvnu grupu
+		Spinner spinnerBloodType = (Spinner) findViewById(R.id.register_spnBloodType);
 		// Create an ArrayAdapter using the string array and a default spinner layout
 		ArrayAdapter<CharSequence> adapterBloodType = ArrayAdapter.createFromResource(this,
 		        R.array.blood_type_array, android.R.layout.simple_spinner_item);
@@ -54,7 +51,7 @@ public class RegisterActivity extends Activity {
 
 		context = this;
 		//dohvati tekstualna polja
-		Button btnRegister = (Button)findViewById(R.id.profile_btnUpdate);
+		Button btnRegister = (Button)findViewById(R.id.register_btnUpdate);
 		
 		btnRegister.setOnClickListener(new OnClickListener() {
 			
@@ -68,32 +65,17 @@ public class RegisterActivity extends Activity {
 		
 	}
 	public void register(){
-		/**
-		 * 
-		 *  private String email;
-			private String password;
-			private String firstName;
-			private String lastName;
-			private String apiKey;
-			private String image;
-			private String phone;
-			private String city;
-			private String sex;
-			private String bloodType;
-			private int year;
-			private int role;
-		 * 
-		 */
-		EditText txtEmail = (EditText) findViewById(R.id.profile_txtEmail);
-		EditText txtPassword = (EditText) findViewById(R.id.profile_txtPassword);
-		EditText txtFirstName = (EditText) findViewById(R.id.profile_txtFirstName);
-		EditText txtLastName = (EditText) findViewById(R.id.profile_txtLastName);
-		EditText txtPhone = (EditText) findViewById(R.id.profile_txtPhone);
-		EditText txtCity = (EditText) findViewById(R.id.profile_txtCity);
-		Spinner spnSex = (Spinner) findViewById(R.id.profile_spnSex);
-		Spinner spnBloodType = (Spinner) findViewById(R.id.profile_spnBloodType);
-		EditText txtYear = (EditText) findViewById(R.id.profile_txtYear);
-		EditText txtWeight = (EditText) findViewById(R.id.profile_intWeight);
+
+		EditText txtEmail = (EditText) findViewById(R.id.register_txtEmail);
+		EditText txtPassword = (EditText) findViewById(R.id.register_txtPassword);
+		EditText txtFirstName = (EditText) findViewById(R.id.register_txtFirstName);
+		EditText txtLastName = (EditText) findViewById(R.id.register_txtLastName);
+		EditText txtPhone = (EditText) findViewById(R.id.register_txtPhone);
+		EditText txtCity = (EditText) findViewById(R.id.register_txtCity);
+		Spinner spnSex = (Spinner) findViewById(R.id.register_spnSex);
+		Spinner spnBloodType = (Spinner) findViewById(R.id.register_spnBloodType);
+		EditText txtYear = (EditText) findViewById(R.id.register_txtYear);
+		EditText txtWeight = (EditText) findViewById(R.id.register_intWeight);
 		
 		
 		String tEmail= txtEmail.getText().toString();

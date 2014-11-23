@@ -27,12 +27,7 @@ import android.os.AsyncTask;
 
 public class RestLogin extends AsyncTask<String, User, String>{
 
-	/**
-	 * Metoda koja izvršava provjeru korisnika uz pomoæ servisa
-	 * @param korisnicko ime i odgovarajuæa lozinka
-	 * @return popunjeni objekt tipa Korisnik(korisnickoIme, "", ime, prezime, email, telefon) 
-	 * ukoliko je prijava uspjesna  ili null ukoliko prijava nije uspješna
-	 */
+	
 	public User login(String email, String lozinka)
 	{			
 		this.execute(email,lozinka );
@@ -50,12 +45,7 @@ public class RestLogin extends AsyncTask<String, User, String>{
 		return  parsirajJson(jsonRezultat);			
 	}
 
-	/**
-	 * Parsira json string dohvaæen s web servisa
-	 * @param jsonRezultat
-	 * @return popunjeni objekt tipa Korisnik(korisnickoIme, "", ime, prezime, email, telefon) 
-	 * ukoliko je prijava uspjesna ili null ukoliko prijava nije uspjesna
-	 */
+	
 	private User parsirajJson(String jsonRezultat) {		
 		User korisnik = null;
 		//{"error":false,"active":"1","email":"test3@gmail.com","firstname":"testime","lastname":"testprezime",
@@ -75,33 +65,15 @@ public class RestLogin extends AsyncTask<String, User, String>{
 						
 					
 						/*unošenje primljenih korisnièkih podataka u objekt*/
-						korisnik =  new User(email, lozinka, ime, prezime,apiKey,role);
+						korisnik = new User(email, lozinka, ime, prezime, rezultat.getString("phone"), "Zagreb", rezultat.getString("birth_year"), rezultat.getString("gender"), rezultat.getString("blood_type"), rezultat.getString("weight"));
+						korisnik.setApiKey(apiKey);
+						//korisnik =  new User(email, lozinka, ime, prezime,apiKey,role);
 				}
 				else{
 					korisnik =  new User("", "", "", "",rezultat.getString("message"),0);
 					
 				}
 			
-			
-				/*JSONArray rezultati = new JSONArray(jsonRezultat);
-				int n = rezultati.length();
-				for(int i=0; i<n; i++)
-				{
-					JSONObject rezultat = rezultati.getJSONObject(i);
-					
-					String email = rezultat.getString("email");
-				
-				
-					String lozinka = "";
-					String apiKey = rezultat.getString("apikey");
-					String ime = rezultat.getString("firstname");
-					String prezime = rezultat.getString("lastname");
-					int role = rezultat.getInt("role");
-					String image  = rezultat.getString("image");
-					
-					korisnik =  new User(email, lozinka, ime, prezime,apiKey, image, role);
-					
-				}*/
 		}			
 		catch (JSONException e) {	
 		/*
@@ -115,11 +87,7 @@ public class RestLogin extends AsyncTask<String, User, String>{
 		return korisnik;
 	}
 
-	/**
-	 * Metoda za asinkronu komunikaciju izmeðu aplikacije i servisa.
-	 * @param email i lozinka u obliku ArrayList
-	 * @return odgovor servisa u json obliku
-	 * */
+	
 	protected String doInBackground(String... podaciPrijava) {
 		HttpClient httpKlijent = new DefaultHttpClient();
 	 

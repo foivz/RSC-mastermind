@@ -24,7 +24,7 @@
     <string name="login_lbl_email">Email:</string>
     <string name="login_email_example">example@mail.com</string>
     <string name="login_pass_example">******</string>
-    <string name="login_lbl_pass">Lozinka:</string>
+    <string name="login_lbl_pass">Lozinka:  </string>
     <string name="login_btn_login">Prijava</string>
     <string name="login_btn_register">Registracija</string>
     <string name="login_reset_password">Resetiraj lozinku</string>
@@ -91,10 +91,15 @@
     <string name="donations_posljednja">Posljednja donacija</string>
     <string name="donations_moguce">Moguće donirati za </string>
     <string name="donations_graf">Donacije</string>
-    <string name="donations_nema_donacija">niste donirali krv</string>
-    <string name="donations_nema_posljednje">nije dostupno</string>
-    <string name="donations_now">Danas</string>
+    <string name="donations_nema_donacija">6</string>
+    <string name="donations_nema_posljednje">20.11.2014.</string>
+    <string name="donations_now">86 dana.</string>
     
+    <!--  activity_institution -->
+    <string name="institution_title">Institucije</string>
+    
+    <!-- activity_settings -->
+
     
     <string-array name="sex_array">
         <item>M</item>

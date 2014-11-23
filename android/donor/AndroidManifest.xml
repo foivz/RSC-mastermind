@@ -10,9 +10,10 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@drawable/ic_launcher"
+        android:icon="@drawable/main_icon" 
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/RedTheme"
+          >
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name" >
@@ -24,23 +25,29 @@
         </activity>
         <activity
             android:name=".LoginActivity"
-            android:label="@string/title_activity_login" >
+            android:label="@string/login_title"
+             android:icon="@drawable/main_icon">
         </activity>
         <activity
-            android:name=".RegisterActivity"
-            android:label="@string/title_activity_register" >
+            android:name=".RegisterActivity"         
+             android:label="@string/register_title"
+             android:icon="@drawable/main_icon" >
         </activity>
         <activity
             android:name=".ProfileActivity"
-            android:label="@string/title_activity_profile" >
+            android:label="@string/profile_title"
+            android:icon="@drawable/main_icon"  >
         </activity>
         <activity
             android:name=".InstitutionActivity"
-            android:label="@string/title_activity_institution" >
+            android:label="@string/institution_title"
+            android:icon="@drawable/main_icon"  >
         </activity>
         <activity
             android:name=".SettingsActivity"
-            android:label="@string/title_activity_settings" >
+            android:label="@string/settings_title" 
+            android:icon="@drawable/main_icon">
+            
         </activity>
         <activity
             android:name=".InviteActivity"
@@ -52,7 +59,9 @@
         </activity>
         <activity
             android:name=".DonationsActivity"
-            android:label="@string/title_activity_donations" >
+            
+             android:label="@string/donations_title"
+            android:icon="@drawable/main_icon"  >
         </activity>
     </application>
 

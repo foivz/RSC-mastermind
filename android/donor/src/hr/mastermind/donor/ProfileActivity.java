@@ -1,11 +1,10 @@
 package hr.mastermind.donor;
 
-import hr.mastermind.donor.rest.RestRegistration;
 import hr.mastermind.donor.rest.RestUpdateProfile;
 import hr.mastermind.donor.type.User;
 import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -65,25 +64,34 @@ public class ProfileActivity extends Activity {
 			}
 		});
 		
+		EditText txtEmail = (EditText) findViewById(R.id.profile_txtEmail);	
+		EditText txtFirst = (EditText) findViewById(R.id.profile_txtFirstName);
+		EditText txtSecond = (EditText) findViewById(R.id.profile_txtLastName);
+		EditText txtPhone = (EditText) findViewById(R.id.profile_txtPhone);
+		EditText txtCity = (EditText) findViewById(R.id.profile_txtCity);
+		EditText txtWeight = (EditText) findViewById(R.id.profile_intWeight);
+		EditText txtYear = (EditText)findViewById(R.id.profile_txtYear);
+		Spinner spnGender = (Spinner) findViewById(R.id.profile_spnSex);
+		Spinner spnBlood = (Spinner) findViewById(R.id.profile_spnBloodType);
+		
+		
+		SharedPreferences settings = MainActivity.contxtMain.getSharedPreferences(MainActivity.PREFS_NAME, 0);
+	    String apiKey = settings.getString("apiKey", "");
+		if(!apiKey.isEmpty()){
+			
+			txtEmail.setText(settings.getString("email", ""));
+			txtFirst.setText(settings.getString("firstName", ""));
+			txtSecond.setText(settings.getString("lastName", ""));
+			txtPhone.setText(settings.getString("phone", ""));
+			txtCity.setText(settings.getString("city",  ""));
+			txtYear.setText(settings.getString("year", ""));
+			txtWeight.setText(settings.getString("weight", ""));
+		}
+		
 		
 	}
 	public void register(){
-		/**
-		 * 
-		 *  private String email;
-			private String password;
-			private String firstName;
-			private String lastName;
-			private String apiKey;
-			private String image;
-			private String phone;
-			private String city;
-			private String sex;
-			private String bloodType;
-			private int year;
-			private int role;
-		 * 
-		 */
+
 		EditText txtEmail = (EditText) findViewById(R.id.profile_txtEmail);
 		EditText txtPassword = (EditText) findViewById(R.id.profile_txtPassword);
 		EditText txtFirstName = (EditText) findViewById(R.id.profile_txtFirstName);
@@ -111,14 +119,11 @@ public class ProfileActivity extends Activity {
 		
 		User user = new User(tEmail, tLozinka, tFirstName, tLastName, tPhone, tCity, tYear, tSex, tBloodType, tWeight);
 		user.setRole(1);
-		
-		
+				
 		String feedback = validateParameters(user, tLozinka2);
-		
-	
-		Toast.makeText(context, feedback, Toast.LENGTH_SHORT).show();
-		
-		
+			
+		Toast.makeText(context, "Uspješno Ažuriranje profila!", Toast.LENGTH_SHORT).show();
+				
 	}
 	
 	

@@ -27,11 +27,6 @@ import android.os.AsyncTask;
 public class RestRegistration extends AsyncTask<User, Integer, String> {
 
 
-	/**
-	 * Metoda koja služi za registraciju usera.
-	 * @param popunjen objekt tipa user sa podacima za prijavu usera
-	 * @return identifikacijski broj poruke o uspješnosti registracije
-	 */
 	public int register(User user)
 	{			
 		this.execute(user);
@@ -50,11 +45,6 @@ public class RestRegistration extends AsyncTask<User, Integer, String> {
 		
 	}
 
-	/**
-	 * Parsira json string dohvaæen s web servisa
-	 * @param jsonRezultat web servisa
-	 * @return identifikacijski broj poruke o uspješnosti registracije
-	 */
 	private int parsirajJson(String jsonRezultat) {		
 		int povratnaInformacijaId = 7;
 		String error = "";
@@ -74,37 +64,13 @@ public class RestRegistration extends AsyncTask<User, Integer, String> {
 		return povratnaInformacijaId;
 	}
 
-	/**
-	 * Metoda za asinkronu komunikaciju izmeðu aplikacije i web servisa
-	 * @param popunjen objekt tipa user sa podacima za prijavu usera
-	 * @return rezultat web servisa u json formatu
-	 */
+	
 	protected String doInBackground(User... user) {
 		HttpClient httpKlijent = new DefaultHttpClient();	 
 		HttpPost httpPostZahtjev = new HttpPost("http://mstrmnd.tk/rest/v1/register_mobile");
 		String jsonResult = "";
 		ResponseHandler<String> handler = new BasicResponseHandler();		
-		
-		/** primjer resta parametara
-		 * 
-		 * 
-		 * $email = $app->request->post('email');
-            $password = $app->request->post('password');
-            $firstname = $app->request->post('firstname');
-            $lastname = $app->request->post('lastname');
-          
-            $phone = $app->request->post('phone');
-            $blood_type = $app->request->post('blood_type'); 
-            $piercing = $app->request->post('piercing');
-            $tattoo = $app->request->post('tattoo');  
-            $sickness = $app->request->post('sickness');
-            $birthyear = $app->request->post('birthyear');
-            $gender = $app->request->post('gender');
-            $weight = $app->request->post('weight');
-            [email=12121, password=12, firstname=12, lastname=12, role=mobile, phone=12, blood_type=0+, birthyear=1991, gender=M, weight=12, tattoo=false, sickness=false, piercing=false]
-		 */
-		
-		
+	
 		
 		try {
 			/*definiranje POST parametara*/

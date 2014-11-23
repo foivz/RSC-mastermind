@@ -432,6 +432,7 @@ $app->get('/stations', function() {
 
 /*________________________________User apis___________________________________________*/
 
+//get user firstname/lastname by email
 $app->get('/userdata/firstlast/:email', 'authenticate', function($email) {
             global $user_id;
             $response = array();
@@ -454,7 +455,31 @@ $app->get('/userdata/firstlast/:email', 'authenticate', function($email) {
                 echoRespnse(404, $response);
             }
         });
-        
+ //get top 10 users by achievemnts
+ $app->get('/achievements/top', 'authenticate', function() {
+            global $user_id;
+            $response = array();
+            $db = new DbHandler();
+ 
+            // get user data
+            $result = $db->getTopTen();
+ 
+           $response["error"] = false;
+            $response["top"] = array();
+ 
+            // looping through result and preparing stations
+            while ($scor = $result->fetch_assoc()) {
+                $tmp = array();
+                $tmp["firstname"] = $scor["firstname"];
+                $tmp["lastname"] = $scor["lastname"];
+                $tmp["score"] = $scor["score"];
+                array_push($response["top"], $tmp);
+            }
+ 
+            echoRespnse(200, $response);
+        });
+       
+
 
 /*___________________________________________________________________________________*/
 
@@ -490,6 +515,30 @@ $app->get('/stations', 'authenticate', function() {
 
 
 /*____________________________________________________________________________________*/
+                                    /*Donations*/
+/*____________________________________________________________________________________*/
+
+$app->get('/donations/user', 'authenticate', function() {
+            global $user_id;
+            $response = array();
+            $db = new DbHandler();
+ 
+            // fetching all stations
+            $result = $db->getAllDonationsByUser($user_id);
+ 
+            $response["error"] = false;
+            $response["donations"] = array();
+ 
+            // looping through result and preparing stations
+            while ($donation= $result->fetch_assoc()) {
+                $tmp = array();
+                $tmp["name"] = $donation["name"];
+                $tmp["time"] = $donation["time"];
+                array_push($response["donations"], $tmp);
+            }
+ 
+            echoRespnse(200, $response);
+        });
 
      
 

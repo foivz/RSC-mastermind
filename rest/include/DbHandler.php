@@ -373,6 +373,15 @@ public function generateApiKey() {
         
     }
     
+    //get admin data on username
+    public function getAdminRole($username){
+        
+       $result= $this->con->query("SELECT admin_role_idadmin_role AS role FROM admin WHERE username='".$username."';");
+       $row=$result->fetch_assoc();
+        $result=$row["role"];
+        return $result;
+    }
+    
 /*___________________________________________________________________________________*/
 /*__________________________________Password reset___________________________________*/
 
@@ -408,6 +417,16 @@ public function getFirstLast($email) {
         }
         else return NULL;
     }
+    
+//get top 10 user based on achievements
+
+public function getTopTen(){
+    $result=$this->con->query("SELECT firstname, lastname, score FROM user ORDER BY score DESC LIMIT 10;");
+      
+            return $result;
+    
+    
+}
 
 
 /*_______________________Station methods________________________________*/
@@ -415,13 +434,22 @@ public function getFirstLast($email) {
 //for frontend registration dropdown
 public function getAllStations() {
         $result=$this->con->query("SELECT * FROM station;");
-        $num_rows=$result->num_rows;
-        if($num_rows==1){
+      
             return $result;
-        }
-        else return NULL;
     }
-  
+
+
+/*_____________________Donation methodds_______________________________*/
+
+public function getAllDonationsByUser($iduser){
+    
+    //get donations time, station
+    $result=$this->con->query("SELECT station.name AS name, donation.time AS time FROM donation JOIN station ON donation.station_idstation=station.idstation WHERE donation.user_iduser='".$iduser."';");
+
+            return $result;
+    }
+    
+
 
 
 }

@@ -22,21 +22,32 @@ class DbHandler {
         $this->con = $db->connect();
     }
     
-    public function getAllStations() {
-        $result=$this->con->query("SELECT * FROM station;");
-        $num_rows=$result->num_rows;
-        if($num_rows==1){
+
+public function getAllDonationsByUser($iduser){
+    
+    //get donations time, station
+    $result=$this->con->query("SELECT station.name AS name, donation.time AS time FROM donation JOIN station ON donation.station_idstation=station.idstation WHERE donation.user_iduser='".$iduser."';");
+
             return $result;
-        }
-        else return NULL;
     }
 }
 
  
 $handle=new DbHandler();
 
-$user = $handle->getAllStations();
- $user=$user->fetch_assoc();
-$user=$user['idstation'];
-echo $user;
+ $result = $handle->getAllDonationsByUser(1);
+ 
+            $response["error"] = false;
+            $response["donations"] = array();
+
+          
+            while ($donation = $result->fetch_assoc()) {
+                $tmp = array();
+                $tmp["name"] = $donation["name"];
+                echo $tmp["name"];
+                $tmp["time"] = $donaiton["time"];
+                 echo $tmp["time"];
+                }
+                
+                
 ?>

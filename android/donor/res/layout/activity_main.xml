@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+      <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        android:baselineAligned="false"
+        android:orientation="horizontal"
+        android:scrollbarStyle="insideOverlay"
+        android:scrollbars="horizontal" >
+
+  <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:layout_gravity="right|bottom"
+      android:layout_weight="1"
+      android:orientation="vertical"
+      android:paddingLeft="30dp"
+      android:paddingTop="20dp" >
+
+      <TableLayout
+          android:layout_width="255dp"
+          android:layout_height="match_parent"
+          android:layout_marginTop="25dp" >
+
+          <TableRow
+              android:id="@+id/tableRow3"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content" >
+
+              <ImageButton
+                  android:id="@+id/pocetna_btnInstitution"
+                  android:layout_width="120dp"
+                  android:layout_height="wrap_content"
+                  android:layout_marginTop="20dp"
+                  android:adjustViewBounds="true"
+                  android:background="#00000000"
+                  android:contentDescription="@string/main_institution"
+                  android:cropToPadding="true"
+                  android:maxHeight="120dp"
+                  android:maxWidth="120dp"
+                  android:scaleType="fitCenter"
+                  android:src="@drawable/icon_institution_main" />
+
+              <ImageButton
+                  android:id="@+id/pocetna_btnDonations"
+                  android:layout_width="120dp"
+                  android:layout_height="120dp"
+                  android:layout_marginEnd="0dp"
+                  android:layout_marginTop="20dp"
+                  android:background="#00000000"
+                  android:contentDescription="@string/main_donations"
+                  android:maxHeight="120dp"
+                  android:maxWidth="120dp"
+                  android:scaleType="fitCenter"
+                  android:src="@drawable/icon_statistic_main" />
+
+          </TableRow>
+
+          <TableRow
+              android:id="@+id/tableRow4"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content" >
+
+              <ImageButton
+                  android:id="@+id/pocetni_btnProfile"
+                  android:layout_width="120dp"
+                  android:layout_height="120dp"
+                  android:layout_marginTop="20dp"
+                  android:adjustViewBounds="false"
+                  android:background="#00000000"
+                  android:contentDescription="@string/main_donations"
+                  android:maxHeight="120dp"
+                  android:maxWidth="120dp"
+                  android:scaleType="fitCenter"
+                  android:src="@drawable/icon_statistic_profile" />
+
+              <ImageButton
+                  android:id="@+id/pocetna_btnSettings"
+                  android:layout_width="120dp"
+                  android:layout_height="120dp"
+                  android:layout_marginTop="20dp"
+                  android:adjustViewBounds="true"
+                  android:background="#00000000"
+                  android:baselineAlignBottom="false"
+                  android:contentDescription="@string/main_settings"
+                  android:cropToPadding="false"
+                  android:maxHeight="120dp"
+                  android:maxWidth="120dp"
+                  android:scaleType="fitEnd"
+                  android:src="@drawable/icon_statistic_settings" />
+
+          </TableRow>
+      </TableLayout>
+
+  </LinearLayout>
+                
+      
+
+    </LinearLayout>
